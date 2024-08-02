@@ -40,7 +40,7 @@ public class ParticipacionServiceImpl implements ParticipacionService{
 
     @Override
     public List<Participacion> findAllParticipaciones() {
-        return participacionRepository.findAll();
+        return (List<Participacion>) participacionRepository.findAll();
     }
 
 

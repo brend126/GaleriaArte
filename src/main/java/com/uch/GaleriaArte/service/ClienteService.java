@@ -12,5 +12,7 @@ public interface ClienteService {
     void deleteCliente(Long id);
 
     Cliente agregarParticipacion(Long clienteId, Long participacionId);
+
+    Cliente findById(Long id);
 }
 
