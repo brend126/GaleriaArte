@@ -1,8 +1,6 @@
 package com.uch.GaleriaArte.controller;
 
-import com.uch.GaleriaArte.entity.Compra;
 import com.uch.GaleriaArte.entity.Preferencia;
-import com.uch.GaleriaArte.service.CompraService;
 import com.uch.GaleriaArte.service.PreferenciaService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;

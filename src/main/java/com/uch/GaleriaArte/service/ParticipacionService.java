@@ -10,7 +10,4 @@ public interface ParticipacionService {
     Participacion updateParticipacion(Long id, Participacion participacion);
     void deleteParticipacion(Long id);
 
-    Participacion agregarCliente(Long participacionId, Long clienteId);
-
-    Participacion findById(Long participacionId);
 }

@@ -2,7 +2,6 @@ package com.uch.GaleriaArte.service;
 
 import com.uch.GaleriaArte.entity.Cliente;
 import com.uch.GaleriaArte.entity.Participacion;
-import com.uch.GaleriaArte.exception.ResourceNotFoundException;
 import com.uch.GaleriaArte.repository.ClienteRepository;
 import com.uch.GaleriaArte.repository.ParticipacionRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,29 +17,13 @@ public class ParticipacionServiceImpl implements ParticipacionService{
     @Autowired
     ParticipacionRepository participacionRepository;
 
-    @Autowired
-    private ClienteRepository clienteRepository;
-
     public Participacion saveParticipacion(Participacion participacion) {
         return participacionRepository.save(participacion);
     }
 
-    public Participacion agregarCliente(Long participacionId, Long clienteId) {
-        Participacion participacion = participacionRepository.findById(participacionId).orElseThrow(() -> new RuntimeException("Participacion not found"));
-        Cliente cliente = clienteRepository.findById(clienteId).orElseThrow(() -> new RuntimeException("Cliente not found"));
-
-        participacion.getClientes().add(cliente);
-        cliente.getParticipaciones().add(participacion);
-
-        participacionRepository.save(participacion);
-        clienteRepository.save(cliente);
-
-        return participacion;
-    }
-
     @Override
     public List<Participacion> findAllParticipaciones() {
-        return (List<Participacion>) participacionRepository.findAll();
+        return participacionRepository.findAll();
     }
 
 
@@ -61,7 +44,5 @@ public class ParticipacionServiceImpl implements ParticipacionService{
         participacionRepository.deleteById(id);
 
     }
-    public Participacion findById(Long id) {
-        return participacionRepository.findById(id).orElse(null);
-    }
+
 }

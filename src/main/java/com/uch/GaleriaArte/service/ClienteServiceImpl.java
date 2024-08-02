@@ -1,17 +1,12 @@
 package com.uch.GaleriaArte.service;
 
 import com.uch.GaleriaArte.entity.Cliente;
-import com.uch.GaleriaArte.entity.Participacion;
-import com.uch.GaleriaArte.exception.ResourceNotFoundException;
 import com.uch.GaleriaArte.repository.ClienteRepository;
-import com.uch.GaleriaArte.repository.ParticipacionRepository;
-import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Objects;
-import java.util.Set;
 
 @Service
 public class ClienteServiceImpl implements ClienteService {
@@ -19,24 +14,8 @@ public class ClienteServiceImpl implements ClienteService {
     @Autowired
     ClienteRepository clienteRepository;
 
-    @Autowired
-    private ParticipacionRepository participacionRepository;
-
     public Cliente saveCliente(Cliente cliente) {
         return clienteRepository.save(cliente);
-    }
-
-    public Cliente agregarParticipacion(Long clienteId, Long participacionId) {
-        Cliente cliente = clienteRepository.findById(clienteId).orElseThrow(() -> new RuntimeException("Cliente not found"));
-        Participacion participacion = participacionRepository.findById(participacionId).orElseThrow(() -> new RuntimeException("Participacion not found"));
-
-        cliente.getParticipaciones().add(participacion);
-        participacion.getClientes().add(cliente);
-
-        clienteRepository.save(cliente);
-        participacionRepository.save(participacion);
-
-        return cliente;
     }
 
     @Override

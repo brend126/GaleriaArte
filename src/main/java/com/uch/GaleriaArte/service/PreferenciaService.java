@@ -1,6 +1,5 @@
 package com.uch.GaleriaArte.service;
 
-import com.uch.GaleriaArte.entity.Cliente;
 import com.uch.GaleriaArte.entity.Preferencia;
 
 import java.util.List;
