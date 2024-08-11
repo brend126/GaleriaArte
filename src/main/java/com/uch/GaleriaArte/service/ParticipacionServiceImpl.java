@@ -1,48 +1,60 @@
 package com.uch.GaleriaArte.service;
 
-import com.uch.GaleriaArte.entity.Cliente;
 import com.uch.GaleriaArte.entity.Participacion;
-import com.uch.GaleriaArte.repository.ClienteRepository;
+import com.uch.GaleriaArte.entity.ObraDeArte;
 import com.uch.GaleriaArte.repository.ParticipacionRepository;
+import com.uch.GaleriaArte.repository.ObraDeArteRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
-import java.util.Objects;
-
+import java.util.Optional;
 
 @Service
-public class ParticipacionServiceImpl implements ParticipacionService{
+public class ParticipacionServiceImpl implements ParticipacionService {
 
     @Autowired
-    ParticipacionRepository participacionRepository;
+    private ParticipacionRepository participacionRepository;
 
-    public Participacion saveParticipacion(Participacion participacion) {
-        return participacionRepository.save(participacion);
-    }
+    @Autowired
+    private ObraDeArteRepository obraDeArteRepository;
 
     @Override
     public List<Participacion> findAllParticipaciones() {
         return participacionRepository.findAll();
     }
 
+    @Override
+    public Participacion saveParticipacion(Participacion participacion) {
+        return participacionRepository.save(participacion);
+    }
 
     @Override
     public Participacion updateParticipacion(Long id, Participacion participacion) {
-        Participacion participacionDb = participacionRepository.findById(id).get();
-        if(Objects.nonNull(participacion.getTipoActividad()) && !"".equalsIgnoreCase(participacion.getTipoActividad())){
-            participacionDb.setTipoActividad(participacion.getTipoActividad());
+        if (participacionRepository.existsById(id)) {
+            participacion.setId(id);
+            return participacionRepository.save(participacion);
         }
-        if(Objects.nonNull(participacion.getFechaActividad()) && !"".equalsIgnoreCase(String.valueOf(participacion.getFechaActividad()))){
-            participacionDb.setFechaActividad(participacion.getFechaActividad());
-        }
-        return participacionRepository.save(participacionDb);
+        throw new RuntimeException("Participacion not found");
     }
 
     @Override
     public void deleteParticipacion(Long id) {
         participacionRepository.deleteById(id);
-
     }
 
+    @Override
+    public Participacion addObraDeArteToParticipacion(Long participacionId, Long obraDeArteId) {
+        Optional<Participacion> participacionOpt = participacionRepository.findById(participacionId);
+        Optional<ObraDeArte> obraDeArteOpt = obraDeArteRepository.findById(obraDeArteId);
+
+        if (participacionOpt.isPresent() && obraDeArteOpt.isPresent()) {
+            Participacion participacion = participacionOpt.get();
+            ObraDeArte obraDeArte = obraDeArteOpt.get();
+            participacion.getObrasDeArte().add(obraDeArte);
+            return participacionRepository.save(participacion);
+        } else {
+            throw new RuntimeException("Participacion or ObraDeArte not found");
+        }
+    }
 }

@@ -7,6 +7,8 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.time.LocalDate;
+import java.util.HashSet;
+import java.util.Set;
 
 @Entity
 @Table(name = "participaciones")
@@ -21,6 +23,13 @@ public class Participacion {
     private String tipoActividad;
     private LocalDate fechaActividad;
 
+    @ManyToMany
+    @JoinTable(
+            name = "participacion_obra_de_arte",
+            joinColumns = @JoinColumn(name = "participacion_id"),
+            inverseJoinColumns = @JoinColumn(name = "obra_de_arte_id")
+    )
+    private Set<ObraDeArte> obrasDeArte = new HashSet<>();
 
 
 }

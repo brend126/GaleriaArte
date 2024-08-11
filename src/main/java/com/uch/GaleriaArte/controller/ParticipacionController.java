@@ -33,5 +33,15 @@ public class ParticipacionController {
         participacionService.deleteParticipacion(id);
         return "Su registro ha sido eliminado correctamente";
     }
+
+    @PutMapping("/participaciones/{participacionId}/obrasDeArte/{obraDeArteId}")
+    public Participacion addObraDeArteToParticipacion(
+            @PathVariable Long participacionId,
+            @PathVariable Long obraDeArteId) {
+        return participacionService.addObraDeArteToParticipacion(participacionId, obraDeArteId);
+    }
 }
+
+
+
 

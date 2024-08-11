@@ -10,4 +10,6 @@ public interface ParticipacionService {
     Participacion updateParticipacion(Long id, Participacion participacion);
     void deleteParticipacion(Long id);
 
+    Participacion addObraDeArteToParticipacion(Long participacionId, Long obraDeArteId);
+
 }
