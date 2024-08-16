@@ -32,5 +32,6 @@ public class Cliente {
     private List<Compra> compras;
     @OneToOne(mappedBy = "cliente")
     private Preferencia preferencia;
-
+    @OneToMany(mappedBy = "cliente")
+    private List<Pago> pagos;
 }
