@@ -26,7 +26,6 @@ public class CompraServiceImpl implements CompraService {
 
     @Override
     public Compra updateCompra(Long id, Compra compra) {
-
         Compra compraDb = compraRepository.findById(id).get();
         if(Objects.nonNull(compra.getObraDeArte()) && !"".equalsIgnoreCase(compra.getObraDeArte())){
             compraDb.setObraDeArte(compra.getObraDeArte());

@@ -1,8 +1,6 @@
 package com.uch.GaleriaArte.service;
 
-import com.uch.GaleriaArte.entity.Cliente;
 import com.uch.GaleriaArte.entity.Pago;
-import com.uch.GaleriaArte.repository.ClienteRepository;
 import com.uch.GaleriaArte.repository.PagoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -35,13 +33,11 @@ public class PagoServiceImpl implements PagoService{
         if(Objects.nonNull(pago.getHistorialDePagos()) && !"".equalsIgnoreCase(pago.getHistorialDePagos())){
             pagoDb.setHistorialDePagos(pago.getHistorialDePagos());
         }
-
         return pagoRepository.save(pagoDb);
     }
 
     @Override
     public void deletePago(Long id) {
         pagoRepository.deleteById(id);
-
     }
 }

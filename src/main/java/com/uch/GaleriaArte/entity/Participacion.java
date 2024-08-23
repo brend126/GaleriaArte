@@ -18,7 +18,7 @@ import java.util.Set;
 @Builder
 public class Participacion {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
     private String tipoActividad;
     private LocalDate fechaActividad;

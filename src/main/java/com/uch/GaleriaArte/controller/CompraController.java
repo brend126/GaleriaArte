@@ -16,14 +16,17 @@ public class CompraController {
     public List<Compra> findAllCompra(){
         return compraService.findAllCompras();
     }
+
     @PostMapping("/saveCompra")
     public Compra saveCompra(@RequestBody Compra compra){
         return compraService.saveCompra(compra);
     }
+
     @PutMapping("/updateCompra/{id}")
     public Compra updateCompra(@PathVariable Long id, @RequestBody Compra compra){
         return compraService.updateCompra(id,compra);
     }
+
     @DeleteMapping("/deleteCompra/{id}")
     public String deleteCompra(@PathVariable Long id){
         compraService.deleteCompra(id);

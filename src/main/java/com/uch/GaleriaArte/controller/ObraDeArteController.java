@@ -1,8 +1,6 @@
 package com.uch.GaleriaArte.controller;
 
-import com.uch.GaleriaArte.entity.Cliente;
 import com.uch.GaleriaArte.entity.ObraDeArte;
-import com.uch.GaleriaArte.service.ClienteService;
 import com.uch.GaleriaArte.service.ObraDeArteService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;

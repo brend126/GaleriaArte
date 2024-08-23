@@ -1,8 +1,6 @@
 package com.uch.GaleriaArte.service;
 
-import com.uch.GaleriaArte.entity.Cliente;
 import com.uch.GaleriaArte.entity.ObraDeArte;
-import com.uch.GaleriaArte.repository.ClienteRepository;
 import com.uch.GaleriaArte.repository.ObraDeArteRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -38,13 +36,11 @@ public class ObraDeArteServiceImpl implements ObraDeArteService{
         if(Objects.nonNull(obraDeArte.getMovimientoArtistico()) && !"".equalsIgnoreCase(obraDeArte.getMovimientoArtistico())){
             obraDeArteDb.setMovimientoArtistico(obraDeArte.getMovimientoArtistico());
         }
-
         return obraDeArteRepository.save(obraDeArteDb);
     }
 
     @Override
     public void deleteObraDeArte(Long id) {
         obraDeArteRepository.deleteById(id);
-
     }
 }

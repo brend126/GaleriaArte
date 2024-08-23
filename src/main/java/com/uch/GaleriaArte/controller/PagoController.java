@@ -1,8 +1,6 @@
 package com.uch.GaleriaArte.controller;
 
-import com.uch.GaleriaArte.entity.Cliente;
 import com.uch.GaleriaArte.entity.Pago;
-import com.uch.GaleriaArte.service.ClienteService;
 import com.uch.GaleriaArte.service.PagoService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;

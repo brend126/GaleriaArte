@@ -16,14 +16,17 @@ public class PreferenciaController {
     public List<Preferencia> findAllPreferencias(){
         return preferenciaService.findAllPreferencias();
     }
+
     @PostMapping("/savePreferencia")
     public Preferencia savePreferencia(@RequestBody Preferencia preferencia){
         return preferenciaService.savePreferencia(preferencia);
     }
+
     @PutMapping("/updatePreferencia/{id}")
     public Preferencia updatePreferencia(@PathVariable Long id, @RequestBody Preferencia preferencia){
         return preferenciaService.updatePreferencia(id,preferencia);
     }
+
     @DeleteMapping("/deletePreferencia/{id}")
     public String deletePreferencia(@PathVariable Long id){
         preferenciaService.deletePreferencia(id);

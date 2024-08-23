@@ -1,8 +1,6 @@
 package com.uch.GaleriaArte.service;
 
-import com.uch.GaleriaArte.entity.Compra;
 import com.uch.GaleriaArte.entity.Preferencia;
-import com.uch.GaleriaArte.repository.CompraRepository;
 import com.uch.GaleriaArte.repository.PreferenciaRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
